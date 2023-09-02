@@ -2,7 +2,7 @@
 package actividad02;
 
 
-public class Triangulo extends FiguraGeometrica{
+public class Triangulo extends FiguraGeometrica implements Shape{
     private Punto punto1;
     private Punto punto2;
     private Punto punto3;
@@ -44,7 +44,8 @@ public class Triangulo extends FiguraGeometrica{
 
     @Override
     public String toString() {
-        return "Triangulo: "+ getNombre() + " tiene 3 puntos: " + getPunto1().toString() + " , " + getPunto2().toString() +" , "+ getPunto3().toString();
+        return "Triangulo nombre: "+ getNombre() + "\n"+
+                "Puntos: " + getPunto1().toString() + getPunto2().toString() + getPunto3().toString();
     }
 
     @Override
@@ -65,6 +66,14 @@ public class Triangulo extends FiguraGeometrica{
         double lado3 = punto3.getDistancia(punto1);
 
         return lado1 == lado2 && lado2 == lado3;
+    }
+
+    @Override
+    public double obtenerPerimetro() {
+        double lado1 = punto1.getDistancia(punto2);
+        double lado2 = punto2.getDistancia(punto3);
+        double lado3 = punto3.getDistancia(punto1);
+        return lado1 + lado2 + lado3;
     }
     
     

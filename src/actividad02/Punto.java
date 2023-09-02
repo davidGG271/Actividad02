@@ -37,9 +37,25 @@ public class Punto {
         return Math.sqrt(Math.pow(otroPunto.coordenada_x - coordenada_x, 2) + Math.pow(otroPunto.coordenada_y - coordenada_y, 2));
     }
     
+    public Punto calcularPuntoMasCercano(Punto[] otrosPuntos){
+        Punto _masCercanoPunto = null;
+        double minDistancia = Double.MAX_VALUE;
+        double actualDistancia;
+        
+        for(int i=0;i<otrosPuntos.length;i++){
+            actualDistancia = this.getDistancia(otrosPuntos[i]);
+            if(actualDistancia<=minDistancia){
+                minDistancia = actualDistancia;
+                _masCercanoPunto = otrosPuntos[i];
+            }
+        }
+        
+        return _masCercanoPunto;
+    }
+    
     @Override
     public String toString() {
-        return "El punto tiene las siguientes coordenadas : " + coordenada_x + "," + coordenada_y;
+        return "El punto tiene las siguientes coordenadas : " + coordenada_x + "," + coordenada_y+"\n";
     }
     
     
